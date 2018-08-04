@@ -29,12 +29,12 @@
 #include <mntent.h>
 
 /* program includes */
-#include "../../arrays.h"
-#include "../../colors.h"
-#include "../../misc.h"
-#include "../../disp.h"
-#include "../../util.h"
-#include "../../error_flag.h"
+#include "arrays.h"
+#include "colors.h"
+#include "misc.h"
+#include "disp.h"
+#include "util.h"
+#include "error_flag.h"
 
 /*	remove preceding and trailing single quote character,
 	remove trailing newline

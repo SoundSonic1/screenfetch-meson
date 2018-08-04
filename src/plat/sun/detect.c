@@ -25,12 +25,12 @@
 #include <X11/Xatom.h>
 
 /* program includes */
-#include "../../arrays.h"
-#include "../../colors.h"
-#include "../../misc.h"
-#include "../../disp.h"
-#include "../../util.h"
-#include "../../error_flag.h"
+#include "arrays.h"
+#include "colors.h"
+#include "misc.h"
+#include "disp.h"
+#include "util.h"
+#include "error_flag.h"
 
 /*	detect_distro
 	detects the computer's distribution

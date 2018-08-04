@@ -7,21 +7,16 @@
 */
 
 /* standard includes */
+#include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <stdbool.h>
 #include <unistd.h>
 
 /* program includes */
 #include "disp.h"
-#include "misc.h"
 #include "error_flag.h"
-
-#if defined(__CYGWIN__) || defined(__MSYS__) || defined(__MINGW32__)
-	#include <windows.h>
-	#include "plat/win32/bitmap.h"
-#endif
+#include "misc.h"
 
 /*	safe_strncpy
 	calls strncpy with the given params, then inserts a terminating NULL
