@@ -8,8 +8,8 @@
 
 
 #include "arrays.h"
-#include "misc.h"
 #include "colors.h"
+#include "misc.h"
 
 char given_distro_str[MAX_STRLEN] = "Unknown";
 char distro_str[MAX_STRLEN] = "Unknown";

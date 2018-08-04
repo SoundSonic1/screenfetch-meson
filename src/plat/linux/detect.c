@@ -7,12 +7,12 @@
 */
 
 /* standard includes */
+#include <getopt.h>
+#include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <stdbool.h>
 #include <string.h>
 #include <strings.h>
-#include <getopt.h>
 
 /* linux-specific includes */
 #include <unistd.h>
@@ -31,10 +31,10 @@
 /* program includes */
 #include "arrays.h"
 #include "colors.h"
-#include "misc.h"
 #include "disp.h"
-#include "util.h"
 #include "error_flag.h"
+#include "misc.h"
+#include "util.h"
 
 /*	remove preceding and trailing single quote character,
 	remove trailing newline
@@ -179,8 +179,9 @@ void detect_distro(void)
 						TODO: Parse NAME or PRETTY_NAME from os-release
 						Until then, spit out an error message.
 					*/
-					if (error)
+					if (error) {
 						ERR_REPORT("Failed to detect a Linux distro (1).");
+                    }
 				}
 				else
 				{
@@ -195,8 +196,6 @@ void detect_distro(void)
 			}
 		}
 	}
-
-	return;
 }
 
 /*	detect_host
@@ -229,8 +228,6 @@ void detect_host(void)
 
 	snprintf(host_str, MAX_STRLEN, "%s%s%s%s@%s%s%s%s",
 		host_color, given_user, TNRM, TWHT, TNRM, host_color, given_host, TNRM);
-
-	return;
 }
 
 /*	detect_kernel
@@ -250,8 +247,6 @@ void detect_kernel(void)
 		ERR_REPORT("Could not detect kernel information.");
 		safe_strncpy(kernel_str, "Linux", MAX_STRLEN);
 	}
-
-	return;
 }
 
 /*	detect_uptime
@@ -278,8 +273,6 @@ void detect_uptime(void)
 	{
 		ERR_REPORT("Could not detect system uptime.");
 	}
-
-	return;
 }
 
 /*	detect_pkgs
@@ -387,8 +380,6 @@ void detect_pkgs(void)
 	}
 
 	snprintf(pkgs_str, MAX_STRLEN, "%d", packages);
-
-	return;
 }
 
 /*	detect_cpu
@@ -439,8 +430,6 @@ void detect_cpu(void)
 	{
 		ERR_REPORT("Failed to open /proc/cpuinfo. Ancient Linux kernel?");
 	}
-
-	return;
 }
 
 /*	detect_gpu
@@ -487,8 +476,6 @@ void detect_gpu(void)
 		safe_strncpy(gpu_str, "No X Server", MAX_STRLEN);
 		ERR_REPORT("Could not open an X display (detect_gpu).");
 	}
-
-	return;
 }
 
 /*	detect_disk
@@ -647,8 +634,6 @@ void detect_shell(void)
 		/* i don't have a version detection system for these, yet */
 		safe_strncpy(shell_str, shell_name, MAX_STRLEN);
 	}
-
-	return;
 }
 
 /*	detect_res
@@ -714,8 +699,6 @@ void detect_de(void)
 			ERR_REPORT("No desktop environment found.");
 		}
 	}
-
-	return;
 }
 
 /*	detect_wm
@@ -764,8 +747,6 @@ void detect_wm(void)
 	{
 		ERR_REPORT("Could not open an X display. (detect_wm)");
 	}
-
-	return;
 }
 
 /*	detect_wm_theme
@@ -1038,8 +1019,6 @@ void detect_wm_theme(void)
 			unquote(wm_theme_str);
 		}
 	}
-
-	return;
 }
 
 /*	detect_gtk
@@ -1080,6 +1059,4 @@ void detect_gtk(void)
 	snprintf(icon_str, MAX_STRLEN, "%s", gtk_icons_str);
 
 	snprintf(font_str, MAX_STRLEN, "%s", gtk_font_str);
-
-	return;
 }

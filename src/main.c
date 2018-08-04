@@ -14,21 +14,21 @@
 */
 
 /* standard includes */
+#include <getopt.h>
+#include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <stdbool.h>
 #include <string.h>
-#include <getopt.h>
 
 /* program includes */
 #include "arrays.h"
+#include "colors.h"
 #include "detect.h"
 #include "disp.h"
+#include "error_flag.h"
 #include "logos.h"
-#include "colors.h"
 #include "misc.h"
 #include "util.h"
-#include "error_flag.h"
 
 int main(int argc, char **argv)
 {
@@ -104,24 +104,29 @@ int main(int argc, char **argv)
 	detect_gtk();
 
 	/* if the user specified a different OS to display, set distro_set to it */
-	if (!STREQ(given_distro_str, "Unknown"))
+	if (!STREQ(given_distro_str, "Unknown")) {
 		safe_strncpy(distro_str, given_distro_str, MAX_STRLEN);
+    }
 
-	if (verbose)
+	if (verbose) {
 		display_verbose(detected_arr, detected_arr_names);
+    }
 
 	if (portrait)
 	{
 		output_logo_only(distro_str);
 		main_text_output(detected_arr, detected_arr_names);
 	}
-	else if (logo)
+	else if (logo) {
 		main_ascii_output(detected_arr, detected_arr_names);
-	else
+    }
+	else {
 		main_text_output(detected_arr, detected_arr_names);
+    }
 
-	if (screenshot)
+	if (screenshot) {
 		take_screenshot(verbose);
+    }
 
 	return EXIT_SUCCESS;
 }

@@ -8,17 +8,17 @@
 */
 
 /* standard includes */
+#include <stdbool.h>
 #include <stdio.h>
 #include <string.h>
-#include <stdbool.h>
 
 /* program includes */
-#include "version.h"
-#include "logos.h"
-#include "colors.h"
-#include "misc.h"
-#include "disp.h"
 #include "arrays.h"
+#include "colors.h"
+#include "disp.h"
+#include "logos.h"
+#include "misc.h"
+#include "version.h"
 
 /*	display_version
 	called if the -V (--version) flag is tripped
@@ -28,7 +28,6 @@ void display_version(void)
 	printf("%s\n", "screenfetch-c - Version " SCREENFETCH_C_VERSION_MAJOR "."
 			SCREENFETCH_C_VERSION_MINOR ", revision "
 			SCREENFETCH_C_VERSION_RELEASE ".");
-	return;
 }
 
 /*	display_help
@@ -49,7 +48,6 @@ void display_help(void)
 			"  -L, --logo-only [DISTRO]\t Output only DISTRO's logo.\n"
 			"For more information, consult screenfetch-c's man page.\n");
 
-	return;
 }
 
 /*	display_verbose
@@ -59,10 +57,10 @@ void display_help(void)
 void display_verbose(char *data[], char *data_names[])
 {
 	int i = 0;
-	for (i = 0; i < DETECTED_ARR_LEN; i++)
+	for (i = 0; i < DETECTED_ARR_LEN; i++) {
 		VERBOSE_OUT(data_names[i], data[i]);
+    }
 
-	return;
 }
 
 /*	process_logo_only
@@ -74,10 +72,10 @@ void process_logo_only(char *distro[], unsigned short int num)
 {
 	unsigned short int x = 0;
 
-	for (x = 0; x < num; x++)
+	for (x = 0; x < num; x++) {
 		printf("%s\n", distro[x]);
+    }
 
-	return;
 }
 
 /*	output_logo_only
@@ -248,7 +246,6 @@ void output_logo_only(char *distro)
 		process_logo_only(linux_logo, 16);
 	}
 
-	return;
 }
 
 /* process_data
@@ -287,7 +284,6 @@ void process_data(char *data[], char *data_names[], char *logo[], unsigned short
 		}
 	}
 
-	return;
 }
 
 /*	main_ascii_output
@@ -507,8 +503,6 @@ void main_ascii_output(char *data[], char *data_names[])
 	{
 		ERR_REPORT("Could not find a logo for the distro.");
 	}
-
-	return;
 }
 
 /*	main_text_output
@@ -519,8 +513,7 @@ void main_text_output(char *data[], char *data_names[])
 {
 	int i;
 
-	for (i = 0; i < DETECTED_ARR_LEN; i++)
+	for (i = 0; i < DETECTED_ARR_LEN; i++) {
 		printf("%s %s\n", data_names[i], data[i]);
-
-	return;
+    }
 }

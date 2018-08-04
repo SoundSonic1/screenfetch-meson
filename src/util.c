@@ -44,8 +44,6 @@ void split_uptime(long uptime, unsigned int *secs, unsigned int *mins,
 	*mins = (unsigned int) (uptime / 60) % 60;
 	*hrs = (unsigned int) (uptime / 3600) % 24;
 	*days = (unsigned int) (uptime / 86400);
-
-	return;
 }
 
 /*	take_screenshot
@@ -113,8 +111,6 @@ void take_screenshot(bool verbose)
 		ERR_REPORT("Problem saving screenshot.");
 	}
 #endif
-
-	return;
 }
 
 /*	returns 1 if command is in PATH, otherwise 0
