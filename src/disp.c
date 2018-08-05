@@ -56,8 +56,7 @@ void display_help(void)
 */
 void display_verbose(char *data[], char *data_names[])
 {
-	int i = 0;
-	for (i = 0; i < DETECTED_ARR_LEN; i++) {
+	for (int i = 0; i < DETECTED_ARR_LEN; i++) {
 		VERBOSE_OUT(data_names[i], data[i]);
     }
 
@@ -70,9 +69,7 @@ void display_verbose(char *data[], char *data_names[])
 */
 void process_logo_only(char *distro[], unsigned short int num)
 {
-	unsigned short int x = 0;
-
-	for (x = 0; x < num; x++) {
+	for (unsigned short int x = 0; x < num; x++) {
 		printf("%s\n", distro[x]);
     }
 
@@ -511,9 +508,7 @@ void main_ascii_output(char *data[], char *data_names[])
 */
 void main_text_output(char *data[], char *data_names[])
 {
-	int i;
-
-	for (i = 0; i < DETECTED_ARR_LEN; i++) {
+	for (int i = 0; i < DETECTED_ARR_LEN; i++) {
 		printf("%s %s\n", data_names[i], data[i]);
     }
 }

@@ -264,10 +264,12 @@ void detect_uptime(void)
 	{
 		split_uptime(si_upt.uptime, &secs, &mins, &hrs, &days);
 
-		if (days > 0)
+		if (days > 0) {
 			snprintf(uptime_str, MAX_STRLEN, "%dd %dh %dm %ds", days, hrs, mins, secs);
-		else
+        }
+		else {
 			snprintf(uptime_str, MAX_STRLEN, "%dh %dm %ds", hrs, mins, secs);
+        }
 	}
 	else
 	{
@@ -395,7 +397,7 @@ void detect_cpu(void)
 	if ((cpu_file = fopen("/proc/cpuinfo", "r")))
 	{
 		/* read past the first 4 lines (#5 is model name) */
-		for (int i = 0; i < 5; i++)
+		for (unsigned short int i = 0; i < 5; i++)
 		{
 			if (!(fgets(cpuinfo_buf, MAX_STRLEN, cpu_file)))
 			{
@@ -414,8 +416,9 @@ void detect_cpu(void)
 		cpuinfo_line += 2;
 		end = strlen(cpuinfo_line);
 
-		if (cpuinfo_line[end - 1] == '\n')
+		if (cpuinfo_line[end - 1] == '\n') {
 			cpuinfo_line[end - 1] = '\0';
+        }
 
 		if (STREQ(cpuinfo_line, "ARMv6-compatible processor rev 7 (v6l)"))
 		{
@@ -520,8 +523,6 @@ void detect_disk(void)
 	{
 		ERR_REPORT("Could not open /etc/mtab (detect_disk).");
 	}
-
-	return;
 }
 
 /*	detect_mem
@@ -570,8 +571,6 @@ void detect_mem(void)
 
 	snprintf(mem_str, MAX_STRLEN, "%lld%s / %lld%s (%lld%%)", used_mem, "MiB",
 			 total_mem, "MiB", mem_pct);
-
-	return;
 }
 
 /*	detect_shell
@@ -662,8 +661,6 @@ void detect_res(void)
 		if (error)
 			ERR_REPORT("Could not open an X display (detect_res)");
 	}
-
-	return;
 }
 
 /*	detect_de
@@ -1047,14 +1044,17 @@ void detect_gtk(void)
 	unquote(gtk_icons_str);
 	unquote(gtk_font_str);
 
-	if (STREQ(gtk3_str, "Unknown"))
+	if (STREQ(gtk3_str, "Unknown")) {
 		snprintf(gtk_str, MAX_STRLEN, "%s (GTK2), %s (Icons)", gtk2_str,
 				gtk_icons_str);
-	else if (STREQ(gtk2_str, "Unknown"))
+    }
+	else if (STREQ(gtk2_str, "Unknown")) {
 		snprintf(gtk_str, MAX_STRLEN, "%s (GTK3), %s (Icons)", gtk3_str,
 				gtk_icons_str);
-	else
+    }
+	else {
 		snprintf(gtk_str, MAX_STRLEN, "%s (GTK2), %s (GTK3)", gtk2_str, gtk3_str);
+    }
 
 	snprintf(icon_str, MAX_STRLEN, "%s", gtk_icons_str);
 
