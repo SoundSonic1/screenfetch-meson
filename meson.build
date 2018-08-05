@@ -34,3 +34,4 @@ executable('screenfetch-c', src, include_directories : incdir,
   c_args : extra_args, link_args : c_link, dependencies : dep, install : true)
 
 install_data(scripts, install_dir : get_option('prefix') + '/bin')
+install_man('man/man1/screenfetch-c.1')
