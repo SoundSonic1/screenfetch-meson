@@ -100,7 +100,7 @@ void take_screenshot(bool verbose)
 
 #if !defined(__CYGWIN__) && !defined(__MSYS__) && !defined(__MINGW32__)
 	safe_strncpy(file_loc, getenv("HOME"), MAX_STRLEN);
-	strncat(file_loc, "/screenfetch_screenshot.png", MAX_STRLEN);
+	strncat(file_loc, "/screenfetch_screenshot.png", MAX_STRLEN-1);
 
 	if (FILE_EXISTS(file_loc) && verbose)
 	{
