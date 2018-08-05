@@ -24,7 +24,7 @@
 */
 char *safe_strncpy(char *destination, const char *source, size_t num)
 {
-	char *ret = strncpy(destination, source, num);
+	char *ret = strncpy(destination, source, num-1);
 	ret[num - 1] = '\0';
 	return ret;
 }
