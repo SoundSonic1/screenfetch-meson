@@ -1,13 +1,4 @@
-#ignore bin directory
+# ignore bin, build and share directory
 bin/
 build/
-#ignore emacs backups
-*~
-#ignore objects
-*.o
-#ignore other binaries created by make
-*.exe
-screenfetch-c
-x11test
-gltest
-
+share/
