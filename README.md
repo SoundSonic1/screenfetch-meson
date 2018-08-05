@@ -20,7 +20,7 @@ screenfetch-c only relies on libraries that come on virtually every system + mes
 
 * On Linux and Solaris, libX11 is required. In most package managers, this is listed as `libX11-dev`.
 
-* To install meson, have a look at their official [webpage](http://mesonbuild.com/Quick-guide.html).
+* To install meson, have a look at their official [webpage](http://mesonbuild.com/Getting-meson.html).
 
 Installing screenfetch-c is very simple:
 
