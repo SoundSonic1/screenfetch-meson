@@ -25,6 +25,11 @@ if get_option('buildtype') == 'release'
   extra_args += ['-march=native']
 endif
 
+# disable -Wformat-truncation in snprintf because it is probably bogus
+if meson.get_compiler('c').get_id() == 'gcc'
+  extra_args += ['-Wno-format-truncation']
+endif
+
 executable('screenfetch-c', src, include_directories : incdir,
   c_args : extra_args, link_args : c_link, dependencies : dep, install : true)
 
