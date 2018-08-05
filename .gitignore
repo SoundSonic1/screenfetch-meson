@@ -1,4 +1,5 @@
 # ignore bin, build and share directory
 bin/
 build/
+build-clang/
 share/
