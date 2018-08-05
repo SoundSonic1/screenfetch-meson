@@ -711,7 +711,7 @@ void detect_wm(void)
 	int actual_format;
 	unsigned long nitems;
 	unsigned long bytes;
-	char *wm_name = '\0';
+	char *wm_name = "";
 	Window *wm_check_window;
 
 	if ((disp = XOpenDisplay(NULL)))
