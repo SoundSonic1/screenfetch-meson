@@ -428,6 +428,11 @@ void detect_cpu(void)
 		{
 			safe_strncpy(cpu_str, cpuinfo_line, MAX_STRLEN);
 		}
+
+        if (cpu_file != NULL)
+        {
+            fclose(cpu_file);
+        }
 	}
 	else if (error)
 	{
@@ -658,8 +663,9 @@ void detect_res(void)
 	{
 		safe_strncpy(res_str, "No X Server", MAX_STRLEN);
 
-		if (error)
+		if (error) {
 			ERR_REPORT("Could not open an X display (detect_res)");
+        }
 	}
 }
 
