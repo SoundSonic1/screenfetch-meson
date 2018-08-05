@@ -23,7 +23,7 @@
 /*	display_version
 	called if the -V (--version) flag is tripped
 */
-void display_version(void)
+inline void display_version(void)
 {
 	printf("%s\n", "screenfetch-c - Version " SCREENFETCH_C_VERSION_MAJOR "."
 			SCREENFETCH_C_VERSION_MINOR ", revision "
@@ -56,7 +56,7 @@ void display_help(void)
 */
 void display_verbose(char *data[], char *data_names[])
 {
-	for (int i = 0; i < DETECTED_ARR_LEN; i++) {
+	for (unsigned short i = 0; i < DETECTED_ARR_LEN; i++) {
 		VERBOSE_OUT(data_names[i], data[i]);
     }
 
@@ -69,7 +69,7 @@ void display_verbose(char *data[], char *data_names[])
 */
 void process_logo_only(char *distro[], unsigned short int num)
 {
-	for (unsigned short int x = 0; x < num; x++) {
+	for (unsigned short x = 0; x < num; x++) {
 		printf("%s\n", distro[x]);
     }
 
@@ -255,7 +255,7 @@ void output_logo_only(char *distro)
 */
 void process_data(char *data[], char *data_names[], char *logo[], unsigned short int num1, unsigned short int num2, char *col1, char *col2, char *col3)
 {
-	unsigned short int x = 0;
+	unsigned short x = 0;
 
 	if (0 == num2)
 	{
@@ -508,7 +508,7 @@ void main_ascii_output(char *data[], char *data_names[])
 */
 void main_text_output(char *data[], char *data_names[])
 {
-	for (int i = 0; i < DETECTED_ARR_LEN; i++) {
+	for (unsigned short i = 0; i < DETECTED_ARR_LEN; i++) {
 		printf("%s %s\n", data_names[i], data[i]);
     }
 }
