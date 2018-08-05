@@ -1,5 +1,5 @@
 project('screenfetch-meson', 'c', default_options : ['c_std=c11'],
-  license : 'MIT', version: '0.1')
+  license : 'MIT', version : '0.1')
 
 # need this to use strdup and popen
 extra_args = ['-D_POSIX_C_SOURCE=200809L']
