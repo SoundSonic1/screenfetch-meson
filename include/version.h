@@ -6,12 +6,12 @@
 **	Like the rest of screenfetch-c, this file is licensed under the MIT license.
 */
 
-#ifndef SCREENFETCH_C_VERSION_H
-#define SCREENFETCH_C_VERSION_H
+#ifndef VERSION_H
+#define VERSION_H
 
 /* version macros */
 #define SCREENFETCH_C_VERSION_MAJOR "1"
 #define SCREENFETCH_C_VERSION_MINOR "6"
 #define SCREENFETCH_C_VERSION_RELEASE "0"
 
-#endif /* SCREENFETCH_C_VERSION_H */
+#endif /* VERSION_H */

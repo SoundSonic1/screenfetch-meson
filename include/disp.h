@@ -7,13 +7,13 @@
 **	You should have received a copy of it with this code.
 */
 
-#ifndef SCREENFETCH_C_DISP_H
-#define SCREENFETCH_C_DISP_H
+#ifndef DISP_H
+#define DISP_H
 
 #include "colors.h"
 
-void display_version(void);
-void display_help(void);
+void display_version();
+void display_help();
 void display_verbose(char *data[], char *data_names[]);
 void process_logo_only(char *distro[], unsigned short int num);
 void output_logo_only(char *distro);
@@ -25,4 +25,4 @@ void main_text_output(char *data[], char *data_names[]);
 						"Error: %s (%s:%d)\n", str, __FILE__, __LINE__))
 #define VERBOSE_OUT(str1, str2) (fprintf(stdout, TLRD ":: " TNRM "%s%s\n", str1, str2))
 
-#endif /* SCREENFETCH_C_DISP_H */
+#endif /* DISP_H */

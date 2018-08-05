@@ -5,8 +5,8 @@
 **	Like the rest of screenfetch-c, this file is licensed under the MIT license.
 */
 
-#ifndef SCREENFETCH_C_MISC_H
-#define SCREENFETCH_C_MISC_H
+#ifndef MISC_H
+#define MISC_H
 
 #define KB (1024)
 #define MB (KB * KB)
@@ -18,4 +18,4 @@
 #define BEGINS_WITH(x, y) (!strncmp(x, y, strlen(y)))
 #define FILE_EXISTS(file) (!access(file, F_OK))
 
-#endif /* SCREENFETCH_C_MISC_H */
+#endif /* MISC_H */

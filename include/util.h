@@ -6,8 +6,8 @@
 **	Like the rest of screenfetch-c, this file is licensed under the MIT license.
 **/
 
-#ifndef SCREENFETCH_C_UTIL_H
-#define SCREENFETCH_C_UTIL_H
+#ifndef UTIL_H
+#define UTIL_H
 
 char *safe_strncpy(char *destination, const char *source, size_t num);
 void split_uptime(long uptime, unsigned int *secs, unsigned int *mins,
@@ -17,4 +17,4 @@ void take_screenshot(bool verbose);
 int command_in_path(const char *command);
 #endif	/* __linux */
 
-#endif /* SCREENFETCH_C_UTIL_H */
+#endif /* UTIL_H */

@@ -6,8 +6,8 @@
 **	Like the rest of screenfetch-c, this file is licensed under the MIT license.
 */
 
-#ifndef SCREENFETCH_C_LOGOS_H
-#define SCREENFETCH_C_LOGOS_H
+#ifndef LOGOS_H
+#define LOGOS_H
 
 extern char *oldarch_logo[];
 extern char *arch_logo[];
@@ -51,4 +51,4 @@ extern char *linux_logo[];
 extern char *solaris_logo[];
 extern char *angstrom_logo[];
 
-#endif /* SCREENFETCH_C_LOGOS_H */
+#endif /* LOGOS_H */

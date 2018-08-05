@@ -6,8 +6,8 @@
 **	externalized in this file.
 */
 
-#ifndef SCREENFETCH_C_ARRAYS_H
-#define SCREENFETCH_C_ARRAYS_H
+#ifndef ARRAYS_H
+#define ARRAYS_H
 
 #include "misc.h"
 
@@ -36,4 +36,4 @@ extern char host_color[MAX_STRLEN];
 extern char *detected_arr[DETECTED_ARR_LEN];
 extern char *detected_arr_names[DETECTED_ARR_LEN];
 
-#endif /* SCREENFETCH_C_ARRAYS_H */
+#endif /* ARRAYS_H */

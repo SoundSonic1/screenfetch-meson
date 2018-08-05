@@ -6,9 +6,9 @@
 **	Like the rest of screenfetch-c, this file is licensed under the MIT license.
 */
 
-#ifndef SCREENFETCH_C_ERROR_FLAG_H
-#define SCREENFETCH_C_ERROR_FLAG_H
+#ifndef ERROR_FLAG_H
+#define ERROR_FLAG_H
 
 extern bool error;
 
-#endif /* SCREENFETCH_C_ERROR_FLAG_H */
+#endif /* ERROR_FLAG_H */

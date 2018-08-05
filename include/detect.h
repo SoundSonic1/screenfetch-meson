@@ -6,23 +6,23 @@
 **	Like the rest of screenfetch-c, this file is licensed under the MIT license.
 */
 
-#ifndef SCREENFETCH_C_DETECT_H
-#define SCREENFETCH_C_DETECT_H
+#ifndef DETECT_H
+#define DETECT_H
 
-void detect_distro(void);
-void detect_host(void);
-void detect_kernel(void);
-void detect_uptime(void);
-void detect_pkgs(void);
-void detect_cpu(void);
-void detect_gpu(void);
-void detect_disk(void);
-void detect_mem(void);
-void detect_shell(void);
-void detect_res(void);
-void detect_de(void);
-void detect_wm(void);
-void detect_wm_theme(void);
-void detect_gtk(void);
+void detect_distro();
+void detect_host();
+void detect_kernel();
+void detect_uptime();
+void detect_pkgs();
+void detect_cpu();
+void detect_gpu();
+void detect_disk();
+void detect_mem();
+void detect_shell();
+void detect_res();
+void detect_de();
+void detect_wm();
+void detect_wm_theme();
+void detect_gtk();
 
-#endif /* SCREENFETCH_C_DETECT_H */
+#endif /* DETECT_H */
