@@ -65,9 +65,9 @@ void display_verbose(char *data[], char *data_names[])
 /*	process_logo_only
 	output handling for output_logo_only
 	argument char *distro: the output logo
-	argument unsigned short int num: the length of the logo in lines
+	argument unsigned short num: the length of the logo in lines
 */
-void process_logo_only(char *distro[], unsigned short int num)
+void process_logo_only(char *distro[], unsigned short num)
 {
 	for (unsigned short x = 0; x < num; x++) {
 		printf("%s\n", distro[x]);
@@ -253,7 +253,7 @@ void output_logo_only(char *distro)
    argument unsigned short int num1, num2: indices for the data
    argument char *col1..3: colors for the output
 */
-void process_data(char *data[], char *data_names[], char *logo[], unsigned short int num1, unsigned short int num2, char *col1, char *col2, char *col3)
+void process_data(char *data[], char *data_names[], char *logo[], unsigned short num1, unsigned short num2, char *col1, char *col2, char *col3)
 {
 	unsigned short x = 0;
 
