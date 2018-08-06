@@ -117,8 +117,7 @@ int main(int argc, char **argv)
 		display_verbose(detected_arr, detected_arr_names);
     }
 
-	if (portrait)
-	{
+	if (portrait) {
 		output_logo_only(distro_str);
 		main_text_output(detected_arr, detected_arr_names);
 	}
