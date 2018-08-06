@@ -15,6 +15,7 @@
 
 /* standard includes */
 #include <getopt.h>
+#include <pthread.h>
 #include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -34,6 +35,7 @@ int main(int argc, char **argv)
 {
 	bool logo = true, portrait = false;
 	bool verbose = false, screenshot = false;
+    pthread_t p1;
 
 	struct option options[] =
 	{
@@ -87,6 +89,8 @@ int main(int argc, char **argv)
 		}
 	}
 
+    pthread_create(&p1, NULL, detect_gtk, NULL);
+
 	detect_distro();
 	detect_host();
 	detect_kernel();
@@ -101,7 +105,8 @@ int main(int argc, char **argv)
 	detect_de();
 	detect_wm();
 	detect_wm_theme();
-	detect_gtk();
+
+    pthread_join(p1, NULL);
 
 	/* if the user specified a different OS to display, set distro_set to it */
 	if (!STREQ(given_distro_str, "Unknown")) {

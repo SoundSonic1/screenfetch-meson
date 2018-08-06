@@ -1031,7 +1031,7 @@ void detect_wm_theme(void)
 	If it isn't present somewhere in the PATH, the GTK will be set as 'Unknown'
 	--
 */
-void detect_gtk(void)
+void *detect_gtk(void)
 {
 	FILE *gtk_file;
 	char exec_str[MAX_STRLEN];
@@ -1065,4 +1065,6 @@ void detect_gtk(void)
 	snprintf(icon_str, MAX_STRLEN, "%s", gtk_icons_str);
 
 	snprintf(font_str, MAX_STRLEN, "%s", gtk_font_str);
+
+    return NULL;
 }

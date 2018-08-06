@@ -14,7 +14,7 @@ scripts = []
 
 if host_machine.system() == 'linux'
   src += ['src/plat/linux/detect.c']
-  dep += [dependency('x11'), dependency('gl')]
+  dep += [dependency('x11'), dependency('gl'), dependency('threads')]
   scripts += ['src/scripts/detectgtk']
 else 
   # only Linux has been tested

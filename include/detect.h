@@ -23,6 +23,6 @@ void detect_res();
 void detect_de();
 void detect_wm();
 void detect_wm_theme();
-void detect_gtk();
+void *detect_gtk();
 
 #endif /* DETECT_H */
