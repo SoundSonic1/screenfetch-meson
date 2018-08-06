@@ -95,7 +95,7 @@ void take_screenshot(bool verbose)
 #elif defined(__APPLE__) && defined(__MACH__)
 		call_status = system("screencapture -x ~/screenfetch_screenshot.png 2> /dev/null");
 #else
-		call_status = system("scrot ~/screenfetch_screenshot.png 2> /dev/null");
+		call_status = system("scrot");
 #endif
 
 #if !defined(__CYGWIN__) && !defined(__MSYS__) && !defined(__MINGW32__)
