@@ -16,6 +16,7 @@ if host_machine.system() == 'linux'
   src += ['src/plat/linux/detect.c']
   dep += [dependency('x11'), dependency('gl'), dependency('threads')]
   scripts += ['src/scripts/detectgtk']
+  find_program('scrot')
 else 
   # only Linux has been tested
   error('Unsupported OS')
@@ -29,6 +30,7 @@ endif
 if meson.get_compiler('c').get_id() == 'gcc'
   extra_args += ['-Wno-format-truncation']
 endif
+
 
 executable('screenfetch-c', src, include_directories : incdir,
   c_args : extra_args, dependencies : dep, install : true)
