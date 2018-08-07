@@ -55,15 +55,15 @@ case $DE in
 			fi
 		fi
 		if [[ -f ${home_gtkrc_two} ]]; then
-			gtk2Theme=$(grep '^gtk-theme-name' ${home_gtkrc_two} | awk -F '=' '{print $2}')
+			gtk2Theme=$(grep '^gtk-theme-name' "${home_gtkrc_two}" | awk -F '=' '{print $2}')
 			gtk2Theme=${gtk2Theme//\"/}
-			gtkIcons=$(grep '^gtk-icon-theme-name' ${home_gtkrc_two} | awk -F '=' '{print $2}')
+			gtkIcons=$(grep '^gtk-icon-theme-name' "${home_gtkrc_two}" | awk -F '=' '{print $2}')
 			gtkIcons=${gtkIcons//\"/}
-			gtkFont=$(grep 'font_name' ${home_gtkrc_two} | awk -F '=' '{print $2}')
+			gtkFont=$(grep 'font_name' "${home_gtkrc_two}" | awk -F '=' '{print $2}')
 			gtkFont=${gtkFont//\"/}
 		fi
 		if [[ -f $HOME/.config/gtk-3.0/settings.ini ]]; then
-			gtk3Theme=$(grep '^gtk-theme-name=' $HOME/.config/gtk-3.0/settings.ini | awk -F '=' '{print $2}')
+			gtk3Theme=$(grep '^gtk-theme-name=' "$HOME"/.config/gtk-3.0/settings.ini | awk -F '=' '{print $2}')
 		fi
 	;;
 	'cinnamon'*)
@@ -75,7 +75,6 @@ case $DE in
 			gtkIcons=${gtkIcons//"'"}
 			gtkFont=$(gsettings get org.gnome.desktop.interface font-name)
 			gtkFont=${gtkFont//"'"}
-			if [ "$background_detect" == "1" ]; then gtkBackground=$(gsettings get org.gnome.desktop.background picture-uri); fi
 		fi
 	;;
 	'gnome'*|'unity'*)
@@ -87,15 +86,10 @@ case $DE in
 			gtkIcons=${gtkIcons//"'"}
 			gtkFont=$(gsettings get org.gnome.desktop.interface font-name)
 			gtkFont=${gtkFont//"'"}
-			if [ "$background_detect" == "1" ]; then gtkBackground=$(gsettings get org.gnome.desktop.background picture-uri); fi
 		elif type -p gconftool-2 >/dev/null 2>&1; then
 			gtk2Theme=$(gconftool-2 -g /desktop/gnome/interface/gtk_theme)
 			gtkIcons=$(gconftool-2 -g /desktop/gnome/interface/icon_theme)
 			gtkFont=$(gconftool-2 -g /desktop/gnome/interface/font_name)
-			if [ "$background_detect" == "1" ]; then
-				gtkBackgroundFull=$(gconftool-2 -g /desktop/gnome/background/picture_filename)
-				gtkBackground=$(echo "$gtkBackgroundFull" | awk -F "/" '{print $NF}')
-			fi
 		fi
 	;;
 	'mate'*)
@@ -121,12 +115,12 @@ case $DE in
 		fi
 	;;
 	'lxde'*)
-		if [ -f ${XDG_CONFIG_HOME:-${HOME}/.config}/lxde/config ]; then
+		if [ -f "${XDG_CONFIG_HOME:-${HOME}/.config}"/lxde/config ]; then
 			lxdeconf="/lxde/config"
-		elif [ $distro == "Trisquel" ]; then
-			lxdeconf=""
-		elif [ "$distro" == "FreeBSD" ]; then
-			lxdeconf=""
+		#elif [ $distro == "Trisquel" ]; then
+		#	lxdeconf=""
+		#elif [ "$distro" == "FreeBSD" ]; then
+		#	lxdeconf=""
 		else
 			lxdeconf="/lxsession/LXDE/desktop.conf"
 		fi
@@ -143,24 +137,24 @@ case $DE in
 	;;
 	# /home/me/.config/rox.sourceforge.net/ROX-Session/Settings.xml
 	*)	# Lightweight or No DE Found
-		if [ -f ${home_gtkrc_two} ]; then
-			if grep -q gtk-theme ${home_gtkrc_two}; then
-				gtk2Theme=$(awk -F '"' '/^gtk-theme/ {print $2}' ${home_gtkrc_two})
+		if [ -f "${home_gtkrc_two}" ]; then
+			if grep -q gtk-theme "${home_gtkrc_two}"; then
+				gtk2Theme=$(awk -F '"' '/^gtk-theme/ {print $2}' "${home_gtkrc_two}")
 			fi
-			if grep -q icon-theme ${home_gtkrc_two}; then
-				gtkIcons=$(awk -F '"' '/^gtk-icon-theme/ {print $2}' ${home_gtkrc_two})
+			if grep -q icon-theme "${home_gtkrc_two}"; then
+				gtkIcons=$(awk -F '"' '/^gtk-icon-theme/ {print $2}' "${home_gtkrc_two}")
 			fi
-			if grep -q font ${home_gtkrc_two}; then
-				gtkFont=$(awk -F '"' '/^gtk-font-name/ {print $2}' ${home_gtkrc_two})
+			if grep -q font "${home_gtkrc_two}"; then
+				gtkFont=$(awk -F '"' '/^gtk-font-name/ {print $2}' "${home_gtkrc_two}")
 			fi
 		fi
 		# $HOME/.gtkrc.mine theme detect only
 		if [[ -f ${home_gtkrc_mine} && ! -f ${home_gtkrc_two} ]]; then
-			if grep -q "^include" ${home_gtkrc_mine}; then
-				gtk2Theme=$(grep '^include.*gtkrc' ${home_gtkrc_mine} | awk -F "/" '{ print $5 }')
+			if grep -q "^include" "${home_gtkrc_mine}"; then
+				gtk2Theme=$(grep '^include.*gtkrc' "${home_gtkrc_mine}" | awk -F "/" '{ print $5 }')
 			fi
-			if grep -q "^gtk-icon-theme-name" ${home_gtkrc_mine}; then
-				gtkIcons=$(grep '^gtk-icon-theme-name' ${home_gtkrc_mine} | awk -F '"' '{print $2}')
+			if grep -q "^gtk-icon-theme-name" "${home_gtkrc_mine}"; then
+				gtkIcons=$(grep '^gtk-icon-theme-name' "${home_gtkrc_mine}" | awk -F '"' '{print $2}')
 			fi
 		fi
 		# /usr/share/gtk-2.0/gtkrc
@@ -196,9 +190,9 @@ case $DE in
 		fi
 		# EXPERIMENTAL gtk3 Theme detection
 		home_conf_gtk_three="$HOME/.config/gtk-3.0/settings.ini"
-		if [ -f ${home_conf_gtk_three} ]; then
-			if grep -q gtk-theme-name ${home_conf_gtk_three}; then
-				gtk3Theme=$(awk -F '=' '/^gtk-theme-name/ {print $2}' ${home_conf_gtk_three})
+		if [ -f "${home_conf_gtk_three}" ]; then
+			if grep -q gtk-theme-name "${home_conf_gtk_three}"; then
+				gtk3Theme=$(awk -F '=' '/^gtk-theme-name/ {print $2}' "${home_conf_gtk_three}")
 			fi
 		fi
 		# Proper gtk3 Theme detection
@@ -211,30 +205,21 @@ case $DE in
 		#	gtk3Theme=${gtk3Theme//"'"}
 		#fi
 		# ROX-Filer icon detect only
-		if [ -a ${XDG_CONFIG_HOME:-${HOME}/.config}/rox.sourceforge.net/ROX-Filer/Options ]; then
-			gtkIcons=$(awk -F '[>,<]' '/^icon_theme/ {print $3}' ${XDG_CONFIG_HOME:-${HOME}/.config}/rox.sourceforge.net/ROX-Filer/Options)
+		if [ -a "${XDG_CONFIG_HOME:-${HOME}/.config}"/rox.sourceforge.net/ROX-Filer/Options ]; then
+			gtkIcons=$(awk -F '[>,<]' '/^icon_theme/ {print $3}' "${XDG_CONFIG_HOME:-${HOME}/.config}"/rox.sourceforge.net/ROX-Filer/Options)
 		fi
 		# E17 detection
-		if [ $E_ICON_THEME ]; then
+		if [ "$E_ICON_THEME" ]; then
 			gtkIcons=${E_ICON_THEME}
 			gtk2Theme="Not available."
 			gtkFont="Not available."
 		fi
-		# Background Detection (feh, nitrogen)
-		if [ "$background_detect" == "1" ]; then
-			if [ -a $HOME/.fehbg ]; then
-				gtkBackgroundFull=$(awk -F "'" '/feh --bg/{print $2}' $HOME/.fehbg 2>/dev/null)
-				gtkBackground=$(echo "$gtkBackgroundFull" | awk -F "/" '{print $NF}')
-			elif [ -a ${XDG_CONFIG_HOME:-${HOME}/.config}/nitrogen/bg-saved.cfg ]; then
-				gtkBackground=$(awk -F "/" '/file=/ {print $NF}' ${XDG_CONFIG_HOME:-${HOME}/.config}/nitrogen/bg-saved.cfg)
-			fi
-		fi
 	;;
 esac
 
-echo $gtk2Theme
-echo $gtk3Theme
-echo $gtkIcons 
-echo $gtkFont
+echo "$gtk2Theme"
+echo "$gtk3Theme"
+echo "$gtkIcons"
+echo "$gtkFont"
 
 
