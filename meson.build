@@ -1,7 +1,7 @@
 project('screenfetch-meson', 'c', default_options : ['c_std=c11'],
   license : 'MIT', version : '0.1')
 
-extra_args = ['-Wextra']
+extra_args = ['-Wextra', '-Werror-implicit-function-declaration']
 
 # need this to use strdup and popen
 extra_args += ['-D_POSIX_C_SOURCE=200809L', '-pedantic']
