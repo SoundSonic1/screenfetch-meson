@@ -283,7 +283,7 @@ void detect_uptime(void)
 void detect_pkgs(void)
 {
 	FILE *pkgs_file;
-	int packages = 0;
+	unsigned int packages = 0;
 	glob_t gl;
 
 	if (STREQ(distro_str, "Arch Linux")
@@ -304,7 +304,7 @@ void detect_pkgs(void)
 	else if (STREQ(distro_str, "Frugalware"))
 	{
 		pkgs_file = popen("pacman-g2 -Q 2> /dev/null | wc -l", "r");
-		fscanf(pkgs_file, "%d", &packages);
+		fscanf(pkgs_file, "%u", &packages);
 		pclose(pkgs_file);
 	}
 	else if (STREQ(distro_str, "Ubuntu") || STREQ(distro_str, "Lubuntu")
@@ -363,13 +363,13 @@ void detect_pkgs(void)
 	{
 		/* RPM uses Berkeley DBs internally, so this won't change soon */
 		pkgs_file = popen("rpm -qa 2> /dev/null | wc -l", "r");
-		fscanf(pkgs_file, "%d", &packages);
+		fscanf(pkgs_file, "%u", &packages);
 		pclose(pkgs_file);
 	}
 	else if (STREQ(distro_str, "Angstrom"))
 	{
 		pkgs_file = popen("opkg list-installed 2> /dev/null | wc -l", "r");
-		fscanf(pkgs_file, "%d", &packages);
+		fscanf(pkgs_file, "%u", &packages);
 		pclose(pkgs_file);
 	}
 	else if (STREQ(distro_str, "Linux")) /* if linux disto detection failed */
