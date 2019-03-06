@@ -1039,6 +1039,10 @@ void *detect_gtk(void)
 	char gtk3_str[MAX_STRLEN] = "Unknown";
 	char gtk_icons_str[MAX_STRLEN] = "Unknown";
 	char gtk_font_str[MAX_STRLEN] = "Unknown";
+    
+    if (!command_in_path("detectgtk") && error) {
+        ERR_REPORT("Error: the script detectgtk is not in the path.");
+    }
 
 	snprintf(exec_str, MAX_STRLEN, "detectgtk '%s' 2> /dev/null", de_str);
 	gtk_file = popen(exec_str, "r");
