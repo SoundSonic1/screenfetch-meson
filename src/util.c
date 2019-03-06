@@ -116,17 +116,18 @@ void take_screenshot(bool verbose)
 /*	returns 1 if command is in PATH, otherwise 0
 */
 #ifdef __linux
-int command_in_path(const char *command)
+bool command_in_path(const char *command)
 {
 	char *env, *env_copy, *str, *token;
 	char *file = NULL;
-	int j, len, rv = 0;
+	unsigned int j, len;
+    bool rv = false;
 
 	env = getenv("PATH");
 
 	if (!command || !env)
 	{
-		return 0;
+		return false;
 	}
 
 	env_copy = strdup(env);
@@ -141,7 +142,7 @@ int command_in_path(const char *command)
 
 		if (token == NULL || len == 0)
 		{
-			rv = 0;
+			rv = false;
 			break;
 		}
 
@@ -150,7 +151,7 @@ int command_in_path(const char *command)
 
 		if (FILE_EXISTS(file))
 		{
-			rv = 1;
+			rv = true;
 			free(file);
 			break;
 		}
