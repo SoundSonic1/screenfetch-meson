@@ -221,5 +221,3 @@ echo "$gtk2Theme"
 echo "$gtk3Theme"
 echo "$gtkIcons"
 echo "$gtkFont"
-
-
