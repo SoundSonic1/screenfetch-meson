@@ -11,7 +11,7 @@
 #define KB (1024)
 #define MB (KB * KB)
 #define GB (MB * KB)
-#define MAX_STRLEN 512
+#define MAX_STRLEN 128
 #define SET_GIVEN_DISTRO(str) (safe_strncpy(given_distro_str, str, MAX_STRLEN))
 #define STREQ(x, y) (!strcmp(x, y))
 #define STRCASEEQ(x, y) (!strcasecmp(x, y))
