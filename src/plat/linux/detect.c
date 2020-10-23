@@ -139,6 +139,11 @@ void detect_distro(void)
 					safe_strncpy(distro_str, "OpenSUSE", MAX_STRLEN);
 					safe_strncpy(host_color, TLGN, MAX_STRLEN);
 				}
+				else if (FILE_EXISTS("/etc/manjaro-release"))
+				{
+					safe_strncpy(distro_str, "Manjaro", MAX_STRLEN);
+					safe_strncpy(host_color, TLGN, MAX_STRLEN);
+				}
 				else if (FILE_EXISTS("/etc/arch-release"))
 				{
 					safe_strncpy(distro_str, "Arch Linux", MAX_STRLEN);
@@ -153,11 +158,6 @@ void detect_distro(void)
 				{
 					safe_strncpy(distro_str, "Angstrom", MAX_STRLEN);
 					safe_strncpy(host_color, TNRM, MAX_STRLEN);
-				}
-				else if (FILE_EXISTS("/etc/manjaro-release"))
-				{
-					safe_strncpy(distro_str, "Manjaro", MAX_STRLEN);
-					safe_strncpy(host_color, TLGN, MAX_STRLEN);
 				}
 				else if (FILE_EXISTS("/etc/slackware-release"))
 				{
